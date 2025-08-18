@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { CardanoWallet, useWallet, useAddress } from "@meshsdk/react";
+import React from "react";
+import { CardanoWallet, useWallet } from "@meshsdk/react";
 
 
 export default function Header() {
 
-const { wallet,connected} = useWallet();
+const { connected } = useWallet();
 
 const walletConnected = async() => {
   if(connected){

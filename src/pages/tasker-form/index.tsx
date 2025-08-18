@@ -1,35 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "@/components/header";
 import PopularTasks from "@/components/populartasks";
 import Footer from "@/components/footer";
 import { useWallet } from "@meshsdk/react";
-import { Asset, byteString, stringToHex, conStr0, hashByteString, integer, MeshTxBuilder, OutputReference, resolveScriptHash, UTxO } from "@meshsdk/core";
+import { Asset, byteString, stringToHex, conStr0, integer, MeshTxBuilder, OutputReference, resolveScriptHash, UTxO } from "@meshsdk/core";
 import { applyParamtoTasker } from "../../../offchain/transactions/tasker/apply-param";
 import { blockchainProvider } from "../../../offchain/utils";
 //import { writeFile } from "fs/promises";
 
-const formTasker: React.FC = () => {
+const FormTasker: React.FC = () => {
 
   const {wallet,connected} = useWallet();
   const [username, setUsername] = useState("");
   const [school, setSchool] = useState("");
   const [interested, setInterest] = useState("");
   const [amount, setAmount] = useState("");
-  const [address, setAddress] = useState("");
+  // Address state not used currently
 
 //Json server objects
-  const tasker = {address,username,school,interested};
+  // const tasker = {address,username,school,interested};
   
-function setUser(e: React.FormEvent) {
-  e.preventDefault(); // Prevent the page from refreshing
-  console.log(username);
-  mint(username)
-}
-
-
-
-
-
 function mint(username: string){
   if (connected) {
     wallet.getChangeAddress().then((address) => {
@@ -44,7 +34,7 @@ function mint(username: string){
     
     console.log(mintUtxo.output.amount);
     const utxo: OutputReference = conStr0([
-      byteString(mintUtxo.input.txHash),
+      byteString(utxos[1].input.txHash),
       integer(0),
     ]);
     
@@ -190,4 +180,4 @@ function mint(username: string){
   );
 };
 
-export default formTasker;
+export default FormTasker;

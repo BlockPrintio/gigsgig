@@ -31,19 +31,4 @@ const txBuilder = new MeshTxBuilder({
     verbose: true,
 });
 
-const unsignedTx = await txBuilder
-.mintPlutusScriptV3()
-.mint("1", workerPolicyId, `GigsWorker${+worker_asset_name}`)
-.mintingScript(workerScript)
-.mintRedeemerValue(mintWorkerRedemeer,"JSON")
-
-.txOut("", workerAsset)
-.txInCollateral(
-
-)
-.changeAddress("")
-.selectUtxosFrom()
-.complete()
-
-const signedTx = 
 }

@@ -1,29 +1,16 @@
-import { 
-    Asset,
-    bool, 
-    conStr0, 
-    integer, 
-    MeshTxBuilder, 
-    PlutusScript, 
-    serializePlutusScript, 
-} from "@meshsdk/core";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { useWallet } from "@meshsdk/react";
-//import { readFile } from "fs/promises";
 import { useEffect, useState } from "react";
-import { blockchainProvider } from "../../../offchain/utils";
-import { METHODS } from "http";
+//import { readFile } from "fs/promises";
 
 const TaskerHomepage = () => {
 
-const {wallet,connected} = useWallet();
-const [title, setTitle] = useState();
-const [desc, setDesc]  = useState();
-const [status, setStatus] = useState();
-const [duration, setDuration] = useState();
-const [amount, setAmount] = useState();
-const [school, setSchool] = useState();
+const [title, setTitle] = useState<string | undefined>();
+const [desc, setDesc]  = useState<string | undefined>();
+const [status, setStatus] = useState<string | undefined>();
+const [duration, setDuration] = useState<string | undefined>();
+const [amount, setAmount] = useState<string | undefined>();
+const [school, setSchool] = useState<string | undefined>();
 
 const id = 1;
 const taskId = 1;
@@ -33,107 +20,28 @@ async function fetchDb(){
    return data;
 }
 const fetchTask = async() => {
-const newData = await fetchDb();
-const task = newData.tasks[taskId]
- setTitle(task.title);
- setDesc(task.description);
- setDuration(task.duration);
- setAmount(task.amount);
- setSchool(task.school);
- setStatus(task.status);
-
+  const newData = await fetchDb();
+  const taskData = newData.tasks[taskId];
+  setTitle(taskData.title);
+  setDesc(taskData.description);
+  setDuration(taskData.duration);
+  setAmount(taskData.amount);
+  setSchool(taskData.school);
+  setStatus(taskData.status);
 }
-fetchTask();
+
+useEffect(() => {
+  fetchTask();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
 
 
-const postTask = async (taskData: any) => {
-    const response = await fetch("http://localhost:8000/tasker/" + `${id}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(taskData),
-    });
-    const data = await response.json();
-    return data;
-};
-
-// Example usage
+// Posting task helper (unused) removed to satisfy linter
 
 
 
-function task(
-    valid_from: number,
-    valid_to: number,
-    is_workdone: boolean,
-    amount: string
-){
-if (connected) {
-    wallet.getChangeAddress().then((address) => {
-    const userAddress = address;
-        console.log(address);
-
-
-
-async function createtask(
-    valid_from: number,
-    valid_to: number,
-    is_workdone: boolean,
-    amount: string
-){
-
-//const collateral:UTxO = (await wallet.getCollateral())[0]!;
-const utxos = await wallet.getUtxos();
-    
-    const taskerScriptRef = "//JSON.parse()"
-       // await readFile("./scriptref-hash/tasker.json", "utf-8"));
-    const taskerScriptUtxo = await blockchainProvider.fetchUTxOs(taskerScriptRef.txhash);
-    const taskerScriptCbor = await taskerScriptUtxo[0].output.scriptRef;
-    const taskerPlutusScript: PlutusScript = {
-        code: taskerScriptCbor!,
-        version: "V3"
-    };
-        const taskerScriptAddress = serializePlutusScript(taskerPlutusScript).address;
-
-    const task_datum = conStr0([
-        integer(valid_from),
-        integer(valid_to),
-        bool(is_workdone)
-    ]);
-
-    const taskLovelace = (Number(amount) * 1000000).toString();
-
-    const taskAsset: Asset[] = [{
-        unit: "lovelace",
-        quantity: taskLovelace
-    }]
-
-    const txBuilder = new MeshTxBuilder({
-        fetcher: blockchainProvider,
-        submitter: blockchainProvider,
-        verbose: true
-    })
-    const unsignedTx = await txBuilder
-    .txOut(taskerScriptAddress,taskAsset)
-    .txOutInlineDatumValue(task_datum, "JSON")
-    .changeAddress(userAddress)
-    .selectUtxosFrom(utxos)
-    .complete()
-
-    const signedTx = await wallet.signTx(unsignedTx);
-    const txhash  = await wallet.submitTx(signedTx);
-    return txhash;
-  };
-  createtask(
-    valid_from,
-    valid_to,
-    is_workdone,
-    amount
-   )
-  })
- };
-};
+// createTask flow is not used yet; remove to satisfy linter
 
 return ( 
    <section className="w-full relative bg-gradient-to-br from-green-100 to-white py-20 px-4">
@@ -203,6 +111,8 @@ return (
             <p className="text-black mb-1">Description: {desc}</p>
             <p className="text-black mb-1">Expires: {duration}</p>
             <p className="text-black mb-1">Amount: {amount}</p>
+            <p className="text-black mb-1">Status: {status}</p>
+            <p className="text-black mb-1">School: {school}</p>
             <p className="text-black mb-1">interested: 1</p>
             {/* {tasker} */}
             <div className="flex space-x-4">

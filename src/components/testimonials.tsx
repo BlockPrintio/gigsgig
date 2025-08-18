@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -29,9 +30,11 @@ export default function Testimonials() {
             className="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col"
           >
             <div className="flex items-center mb-4">
-              <img
+              <Image
                 src={`https://ui-avatars.com/api/?name=${t.name}&background=10B981&color=ffffff&size=64`}
                 alt={`${t.name}'s avatar`}
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-full mr-4"
               />
               <div>

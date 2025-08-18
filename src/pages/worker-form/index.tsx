@@ -11,7 +11,7 @@ import {
    pubKeyHash,
    deserializeAddress
   } from "@meshsdk/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "@/components/header";
 import PopularTasks from "@/components/populartasks";
 import Footer from "@/components/footer";
@@ -21,7 +21,7 @@ import { blockchainProvider } from "../../../offchain/utils";
 
 
 
-const workerForm  = () => {
+const WorkerForm  = () => {
 
 
     const {wallet, connected} = useWallet();
@@ -29,10 +29,10 @@ const workerForm  = () => {
     const [school, setSchool] = useState("");
     const [interest, setInterest] = useState("");
     const [amount, setAmount] = useState("");
-    const [address, setAddress] = useState("");
+    // Address state not used currently
 
-//Json server objects
-    const worker = { address, username, school, interest}
+//Json server objects (unused for now)
+    // const worker = { address, username, school, interest}
 
     function mint(username: string){
       if (connected) {
@@ -194,4 +194,4 @@ const workerForm  = () => {
   );
 };
 
-export default workerForm;
+export default WorkerForm;

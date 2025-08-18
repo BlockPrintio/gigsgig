@@ -23,20 +23,4 @@ const taskerScriptRef = JSON.parse(
 const taskAsset: Asset[] = [{
     unit: "lovelace",
     quantity: amount
-}]
-
-
-const txBuilder = new MeshTxBuilder({
-    fetcher: blockchainProvider,
-    submitter: blockchainProvider,
-    verbose: true
-})
-const unsignedTx = await txBuilder
-.txOut(taskerScriptAddress,taskAsset)
-.txOutInlineDatumValue(task_datum, "JSON")
-.changeAddress("")
-.selectUtxosFrom()
-.complete()
-
-const signedTx = 
-}
+}]}

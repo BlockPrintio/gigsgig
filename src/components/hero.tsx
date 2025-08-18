@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Image from "next/image";
 import illustration from "../assets/Img/Herosection.png";
 
 const Hero: React.FC = () => {
@@ -24,7 +25,7 @@ const Hero: React.FC = () => {
 
         {/* Right Side: Image */}
         <div>
-          <img
+          <Image
             src={illustration}
             alt="Students helping each other"
             className="w-full max-w-md mx-auto"
