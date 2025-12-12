@@ -14,7 +14,7 @@ const tasks = [
 export default function PopularTasks() {
   return (
     <section className="py-16 bg-gray-50 px-4">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-12">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-20">
         Popular Projects
       </h2>
 
@@ -39,7 +39,7 @@ export default function PopularTasks() {
       </div>
 
       <div className="flex justify-center mt-12">
-        <button className="bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-3 rounded-full transition">
+        <button className="bg-green-600 hover:bg-green-700 hover:scale-105 active:scale-95 text-white font-medium px-6 py-3 rounded-full transition transform duration-200">
           View More Tasks
         </button>
       </div>

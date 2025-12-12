@@ -54,11 +54,12 @@ async function fetchTaskers() {
   }, []);
 
     return ( 
-    <section className="w-full relative bg-gradient-to-br from-green-100 to-white py-20 px-4">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-100 to-white">
       <Header />
+      <main className="flex-grow pt-24 px-4 w-full max-w-6xl mx-auto">
         <div className="mt-8">
             <a
-            className="px-6 py-3 bg-green-600 text-black text-lg rounded hover:bg-green-600 focus:outline-none"
+            className="px-6 py-3 bg-green-600 text-black text-lg rounded hover:bg-green-700 hover:scale-105 active:scale-95 transition transform duration-200 focus:outline-none"
             onClick={updateWork}
             >
             Refresh new tasks
@@ -74,17 +75,17 @@ async function fetchTaskers() {
             <p className="text-black">Amount: {work[0]?.amount ?? ""}</p>
             <p className="text-black">Status: {work[0]?.status ?? ""}</p>
             <p className="text-black">School Name: {work[0]?.school ?? ""}</p>
-            <a className="px-4 py-2 bg-green-600 text-white border border-green-800 rounded hover:bg-green-700 cursor-pointer mr-2">
+            <a className="px-4 py-2 bg-green-600 text-white border border-green-800 rounded hover:bg-green-700 hover:scale-105 active:scale-95 transition transform duration-200 cursor-pointer mr-2">
                 accept work
             </a>
-            <a className="px-4 py-2 bg-green-600 text-white border border-green-800 rounded hover:bg-green-700 cursor-pointer">
+            <a className="px-4 py-2 bg-green-600 text-white border border-green-800 rounded hover:bg-green-700 hover:scale-105 active:scale-95 transition transform duration-200 cursor-pointer">
                 claim reward
             </a>
           </div>
         </div>
-    
+      </main>
     <Footer />
-   </section>
+   </div>
   );
 }
  

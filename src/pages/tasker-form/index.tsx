@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Header from "@/components/header";
 import PopularTasks from "@/components/populartasks";
 import Footer from "@/components/footer";
@@ -9,12 +10,19 @@ import { blockchainProvider } from "../../../offchain/utils";
 //import { writeFile } from "fs/promises";
 
 const FormTasker: React.FC = () => {
-
+  const router = useRouter();
   const {wallet,connected} = useWallet();
   const [username, setUsername] = useState("");
   const [school, setSchool] = useState("");
   const [interested, setInterest] = useState("");
   const [amount, setAmount] = useState("");
+  
+  useEffect(() => {
+    if (router.isReady && router.query.category) {
+      setInterest(router.query.category as string);
+    }
+  }, [router.isReady, router.query.category]);
+
   // Address state not used currently
 
 //Json server objects
@@ -98,10 +106,11 @@ function mint(username: string){
 };
 
   return (
-    <section className="w-full relative bg-gradient-to-br from-green-100 to-white py-20 px-4">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-100 to-white">
       <Header />
-  <div className="h-screen flex items-center justify-center -my-40">
-    <form className="max-w-lg mx-auto bg-white p-6 rounded shadow-md">
+      <main className="flex-grow pt-24 w-full">
+        <div className="flex items-center justify-center py-12 px-4">
+          <form className="w-full max-w-lg bg-white p-6 rounded shadow-md">
       <h2 className="text-2xl font-bold mb-4 text-black">Tasker Sign Up</h2>
       <div className="mb-4">
       <label htmlFor="username" className="block text-sm font-medium text-black">
@@ -165,7 +174,7 @@ function mint(username: string){
       </div>
       <a
       type="submit"
-      className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+      className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 hover:scale-105 active:scale-95 transition transform duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
       onClick={() => {
         mint(username);
       }}
@@ -173,10 +182,11 @@ function mint(username: string){
       Submit
       </a>
     </form>
-  </div>
-      <PopularTasks />
+    </div>
+    <PopularTasks />
+    </main>
       <Footer/>
-    </section>
+    </div>
   );
 };
 

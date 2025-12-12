@@ -44,8 +44,9 @@ useEffect(() => {
 // createTask flow is not used yet; remove to satisfy linter
 
 return ( 
-   <section className="w-full relative bg-gradient-to-br from-green-100 to-white py-20 px-4">
+   <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-100 to-white">
       <Header />
+      <main className="flex-grow pt-24 px-4 w-full max-w-6xl mx-auto">
         <div className="mt-8">
             <form className="space-y-4">
                 <div>
@@ -97,7 +98,7 @@ return (
                     />
                 </div>
                 <a
-                className="px-6 py-3 bg-green-800 text-black text-lg rounded hover:bg-green-600 focus:outline-none"
+                className="px-6 py-3 bg-green-800 text-black text-lg rounded hover:bg-green-600 hover:scale-105 active:scale-95 transition transform duration-200 focus:outline-none"
                 onClick={() => alert('Post a Task')}
                 >
                 Post Task
@@ -120,17 +121,18 @@ return (
                 
 
             }}
-            className="px-4 py-2 bg-green-800 text-white border border-green-700 rounded hover:bg-green-600 cursor-pointer">
+            className="px-4 py-2 bg-green-800 text-white border border-green-700 rounded hover:bg-green-600 hover:scale-105 active:scale-95 transition transform duration-200 cursor-pointer">
                 Accept tasker
             </a>
-            <a className="px-4 py-2 bg-green-800 text-white border border-green-700 rounded hover:bg-green-600 cursor-pointer">
+            <a className="px-4 py-2 bg-green-800 text-white border border-green-700 rounded hover:bg-green-600 hover:scale-105 active:scale-95 transition transform duration-200 cursor-pointer">
                pay tasker 
             </a>
             </div>
         </div>
         </div>
+      </main>
     <Footer />
-   </section>
+   </div>
   );
 }
  

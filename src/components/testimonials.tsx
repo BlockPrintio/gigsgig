@@ -19,7 +19,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="py-20 px-4 bg-white">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-800 leading-snug">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 text-gray-800 leading-snug">
         See what students are saying<br />about <span className="text-green-600">GigsGigApp</span>
       </h2>
 
