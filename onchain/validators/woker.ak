@@ -79,7 +79,7 @@ validator worker(
    BurnWorker -> amount < 0
     }
   }
-  else(_){
+  else{
     fail
   }
 }

@@ -1,5 +1,5 @@
 import { applyParamsToScript, OutputReference, PlutusScript} from "@meshsdk/core";
-import plutusBlueprint from "../../../onchain/plutus.json" with {type: 'json'};
+import plutusBlueprint from "../../../onchain/plutus.json" assert {type: 'json'};
 
 const taskerValidator = plutusBlueprint.validators.find(
     ({title}) => title === "tasker.user.spend"

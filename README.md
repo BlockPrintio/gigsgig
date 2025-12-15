@@ -35,11 +35,7 @@ Gigsgig App is a decentralized platform tailored to meet the needs of students b
     ```bash
     npx json-server backend/db.json --port 8000
     ```
-4. Start the development server:
-    ```bash
-    npm buid
-    ```
-5. run fron frontend 
+5. Start the development server:
     ```bash
     npm run dev
     ```

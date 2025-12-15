@@ -23,4 +23,21 @@ const taskerScriptRef = JSON.parse(
 const taskAsset: Asset[] = [{
     unit: "lovelace",
     quantity: amount
-}]}
+}];
+
+const txBuilder = new MeshTxBuilder({
+    fetcher: blockchainProvider,
+    submitter: blockchainProvider,
+});
+
+const unsignedTx = await txBuilder
+    .spendingPlutusScriptV3()
+    .readFrom(taskerScriptRef.taskerHash)
+    .spendScript(taskerScript, task_datum, {})
+    .txOut("addr...", taskAsset)
+    .complete();
+
+return unsignedTx;
+}
+
+export { createtask };

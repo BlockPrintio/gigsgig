@@ -4,7 +4,7 @@ import { blockchainProvider } from "../../utils.js";
 
 
 
-async function mintTasker(
+async function mintWorker(
     worker_asset_name: ByteString,
     utxo: OutputReference,
     worker_address: PubKeyHash
@@ -19,11 +19,11 @@ const workerScript = worker.script;
 const workerPolicyId = resolveScriptHash(workerScript, "V3");
 
 const workerAsset: Asset[] = [{
-    unit: workerPolicyId + `GigsWorker${+worker_asset_name}`,
+    unit: workerPolicyId + worker_asset_name,
     quantity: "1"
 }]
 
-const mintWorkerRedemeer = conStr0([]);
+const mintWorkerRedeemer = conStr0([]);
 
 const txBuilder = new MeshTxBuilder({
     fetcher: blockchainProvider,
@@ -31,4 +31,16 @@ const txBuilder = new MeshTxBuilder({
     verbose: true,
 });
 
+const unsignedTx = await txBuilder
+    .mintPlutusScriptV3()
+    .mint("1", workerPolicyId, worker_asset_name)
+    .mintingScript(workerScript)
+    .mintRedeemerValue(mintWorkerRedeemer, "JSON")
+    .txOut("addr...", workerAsset)
+    .txOutReferenceScript(workerScript)
+    .complete();
+
+return unsignedTx;
 }
+
+export { mintWorker };

@@ -172,15 +172,16 @@ function mint(username: string){
       onChange={(e) => {setAmount(e.target.value)}}
       />
       </div>
-      <a
+      <button
       type="submit"
       className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 hover:scale-105 active:scale-95 transition transform duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-      onClick={() => {
-        mint(username);
+      onClick={async (e) => {
+        e.preventDefault();
+        await mint(username);
       }}
       >
       Submit
-      </a>
+      </button>
     </form>
     </div>
     <PopularTasks />

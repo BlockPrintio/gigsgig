@@ -1,10 +1,10 @@
 import { applyParamsToScript, ByteString, OutputReference, PlutusScript, PubKeyAddress, PubKeyHash, VerificationKey} from "@meshsdk/core";
-import plutusBlueprint from "../../../onchain/plutus.json" with {type: 'json'};
+import plutusBlueprint from "../../../onchain/plutus.json" assert {type: 'json'};
 
-const taskerValidator = plutusBlueprint.validators.find(
+const workerValidator = plutusBlueprint.validators.find(
     ({title}) => title === "woker.worker.spend"
 );
-const workerCborScript = taskerValidator?.compiledCode;
+const workerCborScript = workerValidator?.compiledCode;
 
 function applyParamtoWorker(
     worker_token_name: ByteString,

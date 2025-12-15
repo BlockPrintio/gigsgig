@@ -77,7 +77,7 @@ validator user(
         }
     }
 
-    else(_) {
+    else {
     fail
     }
 }
