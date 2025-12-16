@@ -1,5 +1,5 @@
 import { applyParamsToScript, ByteString, OutputReference, PlutusScript, PubKeyAddress, PubKeyHash, VerificationKey} from "@meshsdk/core";
-import plutusBlueprint from "../../../onchain/plutus.json" assert {type: 'json'};
+import plutusBlueprint from "../../../onchain/plutus.json" with {type: 'json'};
 
 const workerValidator = plutusBlueprint.validators.find(
     ({title}) => title === "woker.worker.spend"

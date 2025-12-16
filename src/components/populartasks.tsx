@@ -13,16 +13,16 @@ const tasks = [
 
 export default function PopularTasks() {
   return (
-    <section className="py-16 bg-gray-50 px-4">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-20">
+    <section className="py-20 md:py-24 bg-gray-50 px-4">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-16 md:mb-20">
         Popular Projects
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
         {tasks.map((task) => (
           <div
             key={task.name}
-            className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-lg hover:border-green-400 transition duration-300 relative"
+            className="bg-white border border-gray-200 p-6 md:p-8 rounded-xl shadow-sm hover:shadow-lg hover:border-green-400 transition duration-300 relative"
           >
             {task.popular && (
               <span className="absolute top-2 right-2 bg-green-100 text-green-600 text-xs font-semibold px-2 py-1 rounded-full">

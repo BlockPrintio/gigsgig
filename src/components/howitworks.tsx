@@ -2,12 +2,12 @@ import React from "react";
 
 export default function HowItWorks() {
   return (
-    <section className="bg-white py-20 px-4 border-t">
+    <section className="bg-white py-20 md:py-24 px-4 border-t">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-20">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-16 md:mb-20">
           How It Works
         </h2>
-        <div className="grid md:grid-cols-3 gap-8 text-center">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-10 text-center">
           {[1, 2, 3].map((step, index) => (
             <div
               key={step}

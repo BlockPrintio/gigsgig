@@ -24,7 +24,7 @@ export default function Home() {
       className={`${geistSans.className} ${geistMono.className} min-h-screen flex flex-col font-[family-name:var(--font-geist-sans)] bg-white`}
     >
       <Header />
-      <main className="flex-grow flex flex-col pt-20">
+      <main className="flex-grow flex flex-col pt-24">
         <Hero />
         <Categories />
         <PopularTasks />

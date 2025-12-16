@@ -33,7 +33,7 @@ const txBuilder = new MeshTxBuilder({
 
 const unsignedTx = await txBuilder
     .mintPlutusScriptV3()
-    .mint("1", workerPolicyId, worker_asset_name)
+    .mint("1", workerPolicyId, worker_asset_name.toString())
     .mintingScript(workerScript)
     .mintRedeemerValue(mintWorkerRedeemer, "JSON")
     .txOut("addr...", workerAsset)
