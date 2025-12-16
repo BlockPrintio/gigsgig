@@ -44,6 +44,14 @@ Gigsgig App is a decentralized platform tailored to meet the needs of students b
 
 1. connect wallet 
 2. navigate to either "I am a worker" or "I am a tasker"
+3. Fill out the form and submit to mint your NFT
+4. If you encounter "account changed" errors, please reconnect your wallet
+
+## Troubleshooting
+
+- **"account changed" error**: This occurs when you switch wallet accounts while the app is running. Please reconnect your wallet and try again.
+- **Backend not running**: Make sure to start the json-server with `npx json-server backend/db.json --port 8000`
+- **Minting fails**: Ensure you have sufficient funds and collateral set in your wallet
 2. Browse available gigs or post a new job.
 3. Use ADA for secure payments.
 4. Complete the gig and leave feedback.

@@ -12,11 +12,11 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="py-14 px-4 max-w-6xl mx-auto">
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center mb-20">
+    <section className="py-20 md:py-24 px-4 max-w-6xl mx-auto">
+      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center mb-16 md:mb-20">
         Explore Popular Categories
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 text-center">
         {categories.map((category) => (
           <Link
             key={category.name}

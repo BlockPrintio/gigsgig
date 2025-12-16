@@ -1,0 +1,18 @@
+import { applyParamsToScript } from "@meshsdk/core";
+import plutusBlueprint from "../../../onchain/plutus.json" assert { type: 'json' };
+const workerValidator = plutusBlueprint.validators.find(({ title }) => title === "woker.worker.spend");
+const workerCborScript = workerValidator?.compiledCode;
+function applyParamtoWorker(worker_token_name, input_utxo, worker_address) {
+    const script = applyParamsToScript(workerCborScript, [
+        worker_token_name,
+        input_utxo,
+        worker_address
+    ], "JSON");
+    const plutusScript = {
+        code: script,
+        version: "V3"
+    };
+    return { script, plutusScript };
+}
+;
+export { applyParamtoWorker };

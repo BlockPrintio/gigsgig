@@ -18,12 +18,12 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 px-4 bg-white">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 text-gray-800 leading-snug">
+    <section className="py-20 md:py-24 px-4 bg-white">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 md:mb-20 text-gray-800 leading-snug">
         See what students are saying<br />about <span className="text-green-600">GigsGigApp</span>
       </h2>
 
-      <div className="max-w-5xl mx-auto grid gap-8 md:grid-cols-3">
+      <div className="max-w-5xl mx-auto grid gap-8 md:gap-10 md:grid-cols-3">
         {testimonials.map((t, i) => (
           <div
             key={i}
